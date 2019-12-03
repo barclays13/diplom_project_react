@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import {Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import CoffeeItem from './coffeeItem';
 import './coffeepage.sass';
 
-export default class ForYouPleasure extends Component{
+export default class CoffeePage extends Component{
+    
     render() {
         return (
             <>
                 <div className="banner">
                     <Container>
                         <Header/>
-                        <h1 className="title-big">For your pleasure</h1>
+                        <h1 className="title-big">Our Coffee</h1>
                     </Container>
                 </div>
                 <div className="shop">
                     <Container>
                         <Row>
                             <Col lg={{ size: 4, offset: 2 }}>
-                                <img className="shop__girl" src="./img/coffee_girl.jpg" alt="coffee_for"></img>
+                                <img className="shop__girl" src="img/coffee_girl.jpg" alt="girl"></img>
                             </Col>
                             <Col lg="4">
-                                <div className="title">About our goods</div>
+                                <div className="title">About our beans</div>
                                 <img className="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo"></img>
                                 <div className="shop__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
@@ -35,6 +36,27 @@ export default class ForYouPleasure extends Component{
                             </Col>
                         </Row>
                         <div className="line"></div>
+                        <Row>
+                            <Col lg={{ size: 4, offset: 2 }}>
+                                <form action="#" className="shop__search">
+                                    <label className="shop__search-label" for="filter">Looking for</label>
+                                    <input id="filter" type="text" placeholder="start typing here..." className="shop__search-input"></input>
+                                </form>
+                            </Col>
+                            <Col lg="4">
+                                <div className="shop__filter">
+                                    <div className="shop__filter-label">
+                                        Or filter
+                                    </div>
+                                    <div className="shop__filter-group">
+                                        <button className="shop__filter-btn">Brazil</button>
+                                        <button className="shop__filter-btn">Kenya</button>
+                                        <button className="shop__filter-btn">Columbia</button>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <CoffeeItem/>

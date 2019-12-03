@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {MainPage, CoffeePage, ItemPage, HeaderItems, Header, ForYouPleasure} from '../pages/';
+import {MainPage, CoffeePage, ItemPage, ForYouPleasure} from '../pages/';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Footer from '../footer';
-import '../../style.sass';
+import './style.sass';
 
 
 export default class App extends Component {
@@ -10,18 +10,15 @@ export default class App extends Component {
         return (
                 <Router>
                     <Switch>
-                        <Route path='/' exact  component={Header} />
-                        <Route path='/coffee'  component={HeaderItems}/>
-                        <Route path='/for-you-pleasure'  component={HeaderItems}/>
-                    </Switch>
-
-                    <Switch>
-                        <Route path='/' exact  component={MainPage} />
-                        <Route path='/coffee'  component={CoffeePage}/>
+                        <Route path='/main'  component={MainPage} />
+                        <Route path='/main/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                            return <ItemPage itemId={id}/>}
+                        }/>
+                        <Route path='/coffee' exact component={CoffeePage}/>
                         <Route path='/for-you-pleasure'  component={ForYouPleasure}/>
                     </Switch>
-                    
-                    {/*<ItemPage/> */}
                     <Footer/>
                 </Router>
                                     
