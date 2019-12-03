@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Header from '../header';
 import '../../sass/coffeepage.sass';
 
 export default class CoffeePage extends Component{
     render() {
         return (
+            <>
+                <div className="banner">
+                    <Container>
+                        <Header/>
+                        <h1 className="title-big">Our Coffee</h1>
+                    </Container>
+                </div>
                 <div className="shop">
                     <Container>
                         <Row>
@@ -103,6 +111,7 @@ export default class CoffeePage extends Component{
                         </Row>
                     </Container>
                 </div>
+            </>
         )
     }
 } 

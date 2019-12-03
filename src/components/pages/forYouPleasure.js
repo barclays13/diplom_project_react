@@ -1,15 +1,23 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Header from '../header';
 import '../../sass/coffeepage.sass';
 
 export default class ForYouPleasure extends Component{
     render() {
         return (
+            <>
+                <div className="banner">
+                    <Container>
+                        <Header/>
+                        <h1 className="title-big">For You Pleasure</h1>
+                    </Container>
+                </div>
                 <div className="shop">
                     <Container>
                         <Row>
                             <Col lg={{ size: 4, offset: 2 }}>
-                                <img className="shop__girl" src="./img/coffee_for.jpg" alt="coffee_for"></img>
+                                <img className="shop__girl" src="img/coffee_girl.jpg" alt="coffee_for"></img>
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our goods</div>
@@ -82,6 +90,7 @@ export default class ForYouPleasure extends Component{
                         </Row>
                     </Container>
                 </div>
+            </>
         )
     }
 } 

@@ -1,13 +1,48 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
-
+import {Link} from 'react-router-dom';
+import Header from '../header';
+ import CoffeeService from '../../services/coffeeService';
 import '../../sass/mainpage.sass';
 
 
 export default class MainPage extends Component{
+
+    coffeeService = new CoffeeService ();
+
+    state = {
+        mainList: null
+    }
+
+    
+    componentDidMount() {
+        this.coffeeService.getAllBestsellers()
+            .then( (mainList) => {
+                console.log('mainList: ', mainList);
+                this.setState({
+                    mainList
+                })
+            });
+    }
+
     render() {
         return (
-            <>
+            <>      
+                    <div className="preview">
+                        <Container >
+                            <Header/>
+                            <Row>
+                                <Col lg={{ size: 10, offset: 1 }}>
+                                    <h1 className="title-big">Everything You Love About Coffee</h1>
+                                    <img className="beanslogo" src="logo/Beans_logo.svg" alt="Beans logo"></img>
+                                    <div className="preview__subtitle">We makes every day full of energy and taste</div>
+                                    <div className="preview__subtitle">Want to try our beans?</div>
+                                    <Link to="/coffee" className="preview__btn">More</Link>
+                            </Col>
+                            </Row>
+                        </Container>
+                    </div>
+
                     <div className="about">
                         <Container>
                             <Row>

@@ -6,7 +6,6 @@ import '../../sass/header.sass';
 export default class Header extends Component {
     render() {
         return (
-            <div className="preview">
                 <Container >
                     <Row>
                         <Col lg="6">
@@ -25,17 +24,7 @@ export default class Header extends Component {
                             </ul>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col lg={{ size: 10, offset: 1 }}>
-                            <h1 className="title-big">Everything You Love About Coffee</h1>
-                            <img className="beanslogo" src="logo/Beans_logo.svg" alt="Beans logo"></img>
-                            <div className="preview__subtitle">We makes every day full of energy and taste</div>
-                            <div className="preview__subtitle">Want to try our beans?</div>
-                            <Link to="/coffee" className="preview__btn">More</Link>
-                    </Col>
-                    </Row>
                 </Container>
-                </div>
         )
     }
 }
