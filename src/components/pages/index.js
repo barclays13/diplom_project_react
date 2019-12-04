@@ -1,11 +1,15 @@
-import ItemPage from './item-page';
-import MainPage from './main-page';
-import CoffeePage from './coffee-page';
+import ItemPage from './itemPage';
+import MainPage from './mainPage';
+import CoffeePage from './coffeePage';
 import ForYouPleasure from './forYouPleasure';
+import MainPageItem from './mainPageItem';
+import CoffeeItem from './coffeeItem';
 
 export {
     CoffeePage,
     MainPage,
     ItemPage,
-    ForYouPleasure
+    ForYouPleasure,
+    MainPageItem,
+    CoffeeItem
 };

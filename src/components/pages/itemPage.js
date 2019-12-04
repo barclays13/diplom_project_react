@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
-import {Row, Col } from 'reactstrap';
-import '../../sass/coffeepage.sass';
+import {Container, Row, Col } from 'reactstrap';
+import Header from '../header';
+// import CoffeeServices from '../../services/coffeeServices';
+import './coffeepage.sass';
 
 export default class ItemPage extends Component{
+
+
+
+    // coffeeServices = new CoffeeServices();
+    // coffeeServices.getBestsellers()
+    //     .then(item => console.log(item));
+
     render() {
+
         return (
             <>
+                    <div className="banner">
+                        <Container>
+                            <Header/>
+                            <h1 className="title-big">Our Coffee</h1>
+                        </Container>
+                    </div>
                     <section className="shop">
-
                             <Row>
                                 <Col lg={{ size: 5, offset: 1 }}>
                                     <img className="shop__girl" src="../../img/coffee_item.jpg" alt="coffee_item"></img>
@@ -31,7 +46,6 @@ export default class ItemPage extends Component{
                                     </div>
                                     </Col>
                                 </Row>
-
                     </section>
             </>
         )

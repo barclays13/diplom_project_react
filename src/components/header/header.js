@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import '../../sass/header.sass';
+import './header.sass';
 
 export default class Header extends Component {
     render() {
+        console.log(this.props);
         return (
                 <Container >
                     <Row>

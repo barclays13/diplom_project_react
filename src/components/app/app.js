@@ -2,20 +2,25 @@ import React, {Component} from 'react';
 import {MainPage, CoffeePage, ItemPage, ForYouPleasure} from '../pages/';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Footer from '../footer';
-import '../../style.sass';
+import './style.sass';
 
 
 export default class App extends Component {
+    
     render() {
         return (
                 <Router>
                     <Switch>
-                        <Route path='/' exact  component={MainPage} />
                         <Route path='/coffee'  component={CoffeePage}/>
                         <Route path='/for-you-pleasure'  component={ForYouPleasure}/>
+                        <Route path='/'  component={MainPage} />
+                        {/* <Route path='/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+                            return <ItemPage itemId={id}/>}
+                        }/> */}
+
                     </Switch>
-                    
-                    {/*<ItemPage/> */}
                     <Footer/>
                 </Router>
                                     
