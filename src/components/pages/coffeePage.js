@@ -2,16 +2,52 @@ import React, {Component} from 'react';
 import {Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import CoffeeItem from './coffeeItem';
+import CoffeeServices from '../../services/coffeeServices';
+import SearchPanel from '../searchPanel';
 import './coffeepage.sass';
 
 export default class CoffeePage extends Component{
-    
+
+    constructor (props) {
+        super(props);
+        this.state = {
+            data : [],
+            term: '',
+        }
+        this.onUpdateSerach = this.onUpdateSerach.bind(this);
+    };
+
+    async componentDidMount() {
+        const coffeeServices = new CoffeeServices ();
+        await coffeeServices.getAllCoffee()
+            .then((data)  => {   
+                this.setState({data})
+            });
+    }
+
+    searchPost(items, term) {
+        if (term.length === 0) {
+            return items
+        }
+
+        return items.filter( (item) => {
+            return item.name.toLowerCase().indexOf(term) > -1
+        });
+    }
+
+    onUpdateSerach(term){
+        this.setState({term})
+    }
+
     render() {
+        const {data, term} = this.state;
+        const visiblePosts = this.searchPost(data, term);
+        console.log('visiblePosts: ', visiblePosts);
         return (
             <>
                 <div className="banner">
                     <Container>
-                        <Header value={1}/>
+                        <Header/>
                         <h1 className="title-big">Our Coffee</h1>
                     </Container>
                 </div>
@@ -38,10 +74,8 @@ export default class CoffeePage extends Component{
                         <div className="line"></div>
                         <Row>
                             <Col lg={{ size: 4, offset: 2 }}>
-                                <form action="#" className="shop__search">
-                                    <label className="shop__search-label" for="filter">Looking for</label>
-                                    <input id="filter" type="text" placeholder="start typing here..." className="shop__search-input"></input>
-                                </form>
+                                <SearchPanel
+                                    onUpdateSerach={this.onUpdateSerach}/>
                             </Col>
                             <Col lg="4">
                                 <div className="shop__filter">
@@ -59,7 +93,8 @@ export default class CoffeePage extends Component{
                         
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
-                                <CoffeeItem/>
+                                <CoffeeItem 
+                                props={visiblePosts}/>
                             </Col>
                         </Row>
                     </Container>

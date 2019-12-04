@@ -5,7 +5,6 @@ import './header.sass';
 
 export default class Header extends Component {
     render() {
-        console.log(this.props);
         return (
                 <Container >
                     <Row>

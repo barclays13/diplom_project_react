@@ -6,14 +6,11 @@ import './coffeepage.sass';
 
 export default class ItemPage extends Component{
 
-
-
     // coffeeServices = new CoffeeServices();
     // coffeeServices.getBestsellers()
     //     .then(item => console.log(item));
 
     render() {
-
         return (
             <>
                     <div className="banner">
