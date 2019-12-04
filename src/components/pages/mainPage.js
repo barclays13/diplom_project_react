@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import MainPageItem from './mainPageItem';
-
 import {Link} from 'react-router-dom';
 import './mainpage.sass';
 
@@ -12,7 +11,7 @@ export default class MainPage extends Component{
 
     render() {
         return (
-            <>          
+            <>      
                     <div className="preview">
                         <Container >
                             <Header/>

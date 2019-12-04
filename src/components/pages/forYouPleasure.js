@@ -11,7 +11,7 @@ export default class ForYouPleasure extends Component{
         super(props);
         this.state = {
             data : [],
-
+            loading: true
         }
     };
 
@@ -19,7 +19,10 @@ export default class ForYouPleasure extends Component{
         const coffeeServices = new CoffeeServices ();
         await coffeeServices.getAllCoffee()
             .then((data)  => {   
-                this.setState({data})
+                this.setState({
+                    data,
+                    loading:false
+                })
             });
     }
 
@@ -55,7 +58,9 @@ export default class ForYouPleasure extends Component{
                         <div className="line"></div>
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
-                                <CoffeeItem props={this.state.data}/>
+                                <CoffeeItem 
+                                props={this.state.data}
+                                loading={this.state.loading}/>
                             </Col>
                         </Row>
                     </Container>

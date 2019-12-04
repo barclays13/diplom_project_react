@@ -12,8 +12,7 @@ export default class FilterPanel extends Component {
     }
 
     render() {
-        const {filter, onFilterSelect} = this.props;
-        console.log('FilterPanel.filter: ', filter);
+        const {onFilterSelect} = this.props;
         const buttons = this.buttons.map(({name, label}) => {
             return (
                 <button 

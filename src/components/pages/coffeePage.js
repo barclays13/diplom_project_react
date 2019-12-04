@@ -14,7 +14,8 @@ export default class CoffeePage extends Component{
         this.state = {
             data : [],
             term: '',
-            filter: ''
+            filter: '',
+            loading: true
         }
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
@@ -24,7 +25,6 @@ export default class CoffeePage extends Component{
         if (filter) {
             return items.filter(item => item.country === filter)
         } else {
-
             return items;
         }
     }
@@ -33,7 +33,10 @@ export default class CoffeePage extends Component{
         const coffeeServices = new CoffeeServices ();
         await coffeeServices.getAllCoffee()
             .then((data)  => {   
-                this.setState({data})
+                this.setState({
+                    data,
+                    loading:false
+                })
             });
     }
 
@@ -55,7 +58,7 @@ export default class CoffeePage extends Component{
     }
 
     render() {
-        const {data, term, filter} = this.state;
+        const {data, term, filter, loading} = this.state;
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
         return (
             <>
@@ -106,7 +109,8 @@ export default class CoffeePage extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <CoffeeItem 
-                                props={visiblePosts}/>
+                                props={visiblePosts}
+                                loading={loading}/>
                             </Col>
                         </Row>
                     </Container>

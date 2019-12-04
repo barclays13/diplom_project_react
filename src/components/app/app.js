@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {MainPage, CoffeePage, ItemPage, ForYouPleasure} from '../pages/';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Footer from '../footer';
 import './style.sass';
 
@@ -19,7 +19,7 @@ export default class App extends Component {
                                 const {id} = match.params;
                             return <ItemPage itemId={id}/>}
                         }/> */}
-
+                        <Redirect from='/' to='/'/>
                     </Switch>
                     <Footer/>
                 </Router>
