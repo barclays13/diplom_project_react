@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CoffeeServices from '../../services/coffeeServices';
 import './coffeepage.sass';
 
 

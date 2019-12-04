@@ -2,9 +2,27 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import CoffeeItem from './coffeeItem';
+import CoffeeServices from '../../services/coffeeServices';
 import './forYouPleasure.sass';
 
 export default class ForYouPleasure extends Component{
+
+    constructor (props) {
+        super(props);
+        this.state = {
+            data : [],
+
+        }
+    };
+
+    async componentDidMount() {
+        const coffeeServices = new CoffeeServices ();
+        await coffeeServices.getAllCoffee()
+            .then((data)  => {   
+                this.setState({data})
+            });
+    }
+
     render() {
         return (
             <>
@@ -37,7 +55,7 @@ export default class ForYouPleasure extends Component{
                         <div className="line"></div>
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
-                                <CoffeeItem/>
+                                <CoffeeItem props={this.state.data}/>
                             </Col>
                         </Row>
                     </Container>

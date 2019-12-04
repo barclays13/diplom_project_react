@@ -4,6 +4,7 @@ import Header from '../header';
 import CoffeeItem from './coffeeItem';
 import CoffeeServices from '../../services/coffeeServices';
 import SearchPanel from '../searchPanel';
+import FilterPanel from '../filterPanel';
 import './coffeepage.sass';
 
 export default class CoffeePage extends Component{
@@ -13,9 +14,20 @@ export default class CoffeePage extends Component{
         this.state = {
             data : [],
             term: '',
+            filter: ''
         }
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
+        this.onFilterSelect = this.onFilterSelect.bind(this);
     };
+
+    filterPost(items, filter) {
+        if (filter) {
+            return items.filter(item => item.country === filter)
+        } else {
+
+            return items;
+        }
+    }
 
     async componentDidMount() {
         const coffeeServices = new CoffeeServices ();
@@ -29,7 +41,6 @@ export default class CoffeePage extends Component{
         if (term.length === 0) {
             return items
         }
-
         return items.filter( (item) => {
             return item.name.toLowerCase().indexOf(term) > -1
         });
@@ -39,10 +50,13 @@ export default class CoffeePage extends Component{
         this.setState({term})
     }
 
+    onFilterSelect(filter) {
+        this.setState({filter})
+    }
+
     render() {
-        const {data, term} = this.state;
-        const visiblePosts = this.searchPost(data, term);
-        console.log('visiblePosts: ', visiblePosts);
+        const {data, term, filter} = this.state;
+        const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
         return (
             <>
                 <div className="banner">
@@ -82,11 +96,9 @@ export default class CoffeePage extends Component{
                                     <div className="shop__filter-label">
                                         Or filter
                                     </div>
-                                    <div className="shop__filter-group">
-                                        <button className="shop__filter-btn">Brazil</button>
-                                        <button className="shop__filter-btn">Kenya</button>
-                                        <button className="shop__filter-btn">Columbia</button>
-                                    </div>
+                                    <FilterPanel
+                                        filter={filter}
+                                        onFilterSelect={this.onFilterSelect}/>
                                 </div>
                             </Col>
                         </Row>
