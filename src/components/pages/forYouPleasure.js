@@ -13,12 +13,15 @@ export default class ForYouPleasure extends Component{
         this.state = {
             data : [],
             loading: true,
-            error: false
+            error: false,
+            errorMessage: false
         }
     };
 
     componentDidCatch () {
-        this.setState({error:true});
+        this.setState({
+            errorMessage:true
+        });
     }
 
     async componentDidMount() {
@@ -41,13 +44,13 @@ export default class ForYouPleasure extends Component{
     }
 
     render() {
-        const {data, loading, error} =this.state;
-        console.log('error: ', error);
 
-        if (this.state.error){
+        if (this.state.errorMessage){
             return <Error/>
         }
 
+        const {data, loading, error} =this.state;
+        
         return (
             <>
                 <div className="banner-2">

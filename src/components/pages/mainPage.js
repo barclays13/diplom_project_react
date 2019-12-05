@@ -8,20 +8,23 @@ import './mainpage.sass';
 
 
 export default class MainPage extends Component{
-    constructor(props){
-        super(props);
-        this.state = {error: false}
-    }
-
+    
+   state = {
+       errorMessage: false
+    };
+    
     componentDidCatch(){
-        this.setState({error:true});
+        this.setState({
+            errorMessage:true
+        });
     }
 
     render() {
 
-        if (this.state.error){
+        if (this.state.errorMessage){
             return <Error/>
         }
+
         return (
             <>      
                     <div className="preview">

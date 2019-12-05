@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Container, Row, Col } from 'reactstrap';
+import Error from '../error';
 import Header from '../header';
 import CoffeeItem from './coffeeItem';
 import CoffeeServices from '../../services/coffeeServices';
 import SearchPanel from '../searchPanel';
 import FilterPanel from '../filterPanel';
-import Error from '../error';
 import './coffeepage.sass';
 
 export default class CoffeePage extends Component{
@@ -17,11 +17,18 @@ export default class CoffeePage extends Component{
             term: '',
             filter: '',
             loading: true,
-            error: false
+            error: false,
+            errorMessage: false
         }
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
     };
+
+    componentDidCatch(){
+        this.setState({
+            errorMessage:true
+        });
+    }
 
     filterPost(items, filter) {
         if (filter) {
@@ -69,18 +76,12 @@ export default class CoffeePage extends Component{
 
     render() {
 
-
-
-        const {data, term, filter, loading, error} = this.state;
-
-        if (error) {
+        if (this.state.errorMessage){
             return <Error/>
         }
-        
-        console.log('error1: ', error);
+
+        const {data, term, filter, loading, error} = this.state;
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
-
-
         return (
             <>
                 <div className="banner">
