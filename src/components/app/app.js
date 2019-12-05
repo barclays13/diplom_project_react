@@ -6,6 +6,7 @@ import './style.sass';
 
 
 export default class App extends Component {
+
     render() {
         return (
                 <Router>
@@ -17,7 +18,7 @@ export default class App extends Component {
                             ({match}) => {
                                 const {id} = match.params;
                             return <ItemPage itemId={id}/>}
-                        }/> */}
+                        }/>  */}
                         <Redirect from='/' to='/'/>
                     </Switch>
                     <Footer/>

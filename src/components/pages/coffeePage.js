@@ -34,7 +34,6 @@ export default class CoffeePage extends Component{
         if (filter === 'All'){
             return items;
         }else if (filter) {
-            console.log(1);
             return items.filter(item => item.country === filter)
         } else {
             return items;
@@ -134,9 +133,9 @@ export default class CoffeePage extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <CoffeeItem 
-                                props={visiblePosts}
-                                loading={loading}
-                                error={error}/>
+                                    props={visiblePosts}
+                                    loading={loading}
+                                    error={error}/>
                             </Col>
                         </Row>
                     </Container>

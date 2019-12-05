@@ -8,10 +8,13 @@ import './mainpage.sass';
 
 
 export default class MainPage extends Component{
-    
-   state = {
-       errorMessage: false
-    };
+    constructor(){
+        super();
+        this.state = {
+            errorMessage: false
+         };
+    }
+
     
     componentDidCatch(){
         this.setState({
@@ -70,7 +73,7 @@ export default class MainPage extends Component{
                             <Row>
                                 <Col lg={{ size: 10, offset: 1 }}>
                                     <div className="best__wrapper">
-                                         <MainPageItem />
+                                         <MainPageItem/>
                                     </div>
                                 </Col>
                             </Row>

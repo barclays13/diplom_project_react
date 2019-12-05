@@ -9,6 +9,7 @@ export default class MainPageItem extends Component {
 
         constructor(props){
             super(props);
+            this.servicesItem();
             this.state = {
                 data: [],
                 loading:true,
@@ -16,7 +17,7 @@ export default class MainPageItem extends Component {
             };
         } 
 
-        componentWillMount () {
+        servicesItem(){
             const coffeeServices = new CoffeeServices ();
             coffeeServices.getAllBestsellers()
                 .then((data) => {   
@@ -34,9 +35,9 @@ export default class MainPageItem extends Component {
                     })
                 });
         }
-
+        
         render(){
-            
+
             const {loading, error} = this.state;
             if (error) {
                 return <Error/>
