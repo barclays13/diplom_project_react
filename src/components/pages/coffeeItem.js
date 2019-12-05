@@ -5,19 +5,21 @@ import './coffeepage.sass';
 
 
 export default class CoffeeItem extends Component {
+    
+        componentDidCatch () {
+            this.setState({error:true});
+        }
+
 
         render(){
                 const {loading, props, error } = this.props; 
-                console.log('loading: ', loading);
-                console.log('error: ', error);
-                console.log('props: ', props);
-
-                if (loading) {
-                    return <Spinner/>
-                }
 
                 if (error) {
                     return <Error/>
+                }
+
+                if (loading) {
+                    return <Spinner/>
                 }
 
                 const element = props.map(item=>{

@@ -1,29 +1,46 @@
 import React, {Component} from 'react';
 import CoffeeServices from '../../services/coffeeServices';
 import Spinner from '../spinner';
+import Error from '../error/';
 import './mainpage.sass';
 
 
 export default class MainPageItem extends Component {
 
-        state = {
-            data: [],
-            loading:true
-        }
-    
+        constructor(props){
+            super(props);
+            this.state = {
+                data: [],
+                loading:true,
+                error: false
+            };
+        } 
+
         componentWillMount () {
             const coffeeServices = new CoffeeServices ();
             coffeeServices.getAllBestsellers()
                 .then((data) => {   
                     this.setState({
                         data,
-                        loading:false
+                        loading:false,
+                        error: false
+                    })
+                })
+                .catch((data) => {   
+                    this.setState({
+                        data,
+                        loading:false,
+                        error: true
                     })
                 });
         }
 
         render(){
-            const {loading} = this.state;
+            
+            const {loading, error} = this.state;
+            if (error) {
+                return <Error/>
+            }
 
             if (loading) {
                 return <Spinner/>

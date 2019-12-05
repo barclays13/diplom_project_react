@@ -2,14 +2,26 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import MainPageItem from './mainPageItem';
+import Error from '../error';
 import {Link} from 'react-router-dom';
 import './mainpage.sass';
 
 
 export default class MainPage extends Component{
+    constructor(props){
+        super(props);
+        this.state = {error: false}
+    }
 
+    componentDidCatch(){
+        this.setState({error:true});
+    }
 
     render() {
+
+        if (this.state.error){
+            return <Error/>
+        }
         return (
             <>      
                     <div className="preview">

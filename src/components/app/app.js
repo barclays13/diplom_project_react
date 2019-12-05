@@ -6,7 +6,6 @@ import './style.sass';
 
 
 export default class App extends Component {
-    
     render() {
         return (
                 <Router>

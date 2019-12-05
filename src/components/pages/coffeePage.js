@@ -5,6 +5,7 @@ import CoffeeItem from './coffeeItem';
 import CoffeeServices from '../../services/coffeeServices';
 import SearchPanel from '../searchPanel';
 import FilterPanel from '../filterPanel';
+import Error from '../error';
 import './coffeepage.sass';
 
 export default class CoffeePage extends Component{
@@ -68,8 +69,18 @@ export default class CoffeePage extends Component{
 
     render() {
 
+
+
         const {data, term, filter, loading, error} = this.state;
+
+        if (error) {
+            return <Error/>
+        }
+        
+        console.log('error1: ', error);
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
+
+
         return (
             <>
                 <div className="banner">

@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
 import {Container, Row, Col } from 'reactstrap';
 import Header from '../header';
-// import CoffeeServices from '../../services/coffeeServices';
 import './coffeepage.sass';
 
 export default class ItemPage extends Component{
-
-    // coffeeServices = new CoffeeServices();
-    // coffeeServices.getBestsellers()
-    //     .then(item => console.log(item));
 
     render() {
         return (

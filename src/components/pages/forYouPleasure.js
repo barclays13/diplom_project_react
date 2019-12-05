@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import CoffeeItem from './coffeeItem';
 import CoffeeServices from '../../services/coffeeServices';
+import Error from '../error';
 import './forYouPleasure.sass';
 
 export default class ForYouPleasure extends Component{
@@ -15,6 +16,10 @@ export default class ForYouPleasure extends Component{
             error: false
         }
     };
+
+    componentDidCatch () {
+        this.setState({error:true});
+    }
 
     async componentDidMount() {
         const coffeeServices = new CoffeeServices ();
@@ -37,6 +42,12 @@ export default class ForYouPleasure extends Component{
 
     render() {
         const {data, loading, error} =this.state;
+        console.log('error: ', error);
+
+        if (this.state.error){
+            return <Error/>
+        }
+
         return (
             <>
                 <div className="banner-2">

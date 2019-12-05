@@ -13,7 +13,7 @@ export default class CoffeeServices {
     }
 
     async getAllBestsellers  () {
-        const res = await this.getResource('/bestsellers');
+        const res = await this.getResource('/bestsellers1');
         return res.map(this._transformBestsellers);
     }
 
@@ -23,7 +23,7 @@ export default class CoffeeServices {
     }
 
     async getAllCoffee  () {
-        const res = await this.getResource('/coffee');
+        const res = await this.getResource('/coffee1');
         return res.map(this._transformCoffee);
     }
 
