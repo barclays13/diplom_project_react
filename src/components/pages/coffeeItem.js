@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
+import Error from '../error/';
 import './coffeepage.sass';
 
 
 export default class CoffeeItem extends Component {
 
         render(){
-                const {loading, props } = this.props; 
+                const {loading, props, error } = this.props; 
+                console.log('loading: ', loading);
+                console.log('error: ', error);
                 console.log('props: ', props);
 
                 if (loading) {
                     return <Spinner/>
+                }
+
+                if (error) {
+                    return <Error/>
                 }
 
                 const element = props.map(item=>{

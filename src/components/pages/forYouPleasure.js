@@ -11,7 +11,8 @@ export default class ForYouPleasure extends Component{
         super(props);
         this.state = {
             data : [],
-            loading: true
+            loading: true,
+            error: false
         }
     };
 
@@ -21,12 +22,21 @@ export default class ForYouPleasure extends Component{
             .then((data)  => {   
                 this.setState({
                     data,
-                    loading:false
+                    loading:false,
+                    error: false
+                })
+            })
+            .catch((data)  => {   
+                this.setState({
+                    data,
+                    loading:false,
+                    error: true
                 })
             });
     }
 
     render() {
+        const {data, loading, error} =this.state;
         return (
             <>
                 <div className="banner-2">
@@ -59,8 +69,9 @@ export default class ForYouPleasure extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <CoffeeItem 
-                                props={this.state.data}
-                                loading={this.state.loading}/>
+                                props={data}
+                                loading={loading}
+                                error= {error}/>
                             </Col>
                         </Row>
                     </Container>
