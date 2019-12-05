@@ -15,7 +15,7 @@ export default class CoffeePage extends Component{
         this.state = {
             data : [],
             term: '',
-            filter: '',
+            filter: 'All',
             loading: true,
             error: false,
             errorMessage: false
@@ -31,7 +31,10 @@ export default class CoffeePage extends Component{
     }
 
     filterPost(items, filter) {
-        if (filter) {
+        if (filter === 'All'){
+            return items;
+        }else if (filter) {
+            console.log(1);
             return items.filter(item => item.country === filter)
         } else {
             return items;
