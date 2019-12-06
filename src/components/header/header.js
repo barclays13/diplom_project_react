@@ -11,7 +11,7 @@ export default class Header extends Component {
                         <Col lg="6">
                         <ul className="header">
                                 <li className="header__item">
-                                    <Link to="/">
+                                    <Link to="/main">
                                         <img src="logo/Logo.svg" alt="logo"></img>
                                     </Link>
                                 </li>

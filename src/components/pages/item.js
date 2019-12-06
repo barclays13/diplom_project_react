@@ -15,7 +15,6 @@ export default class Item extends Component{
             )
         } else {
             const {name, url, country, description, price} = item[0];
-            console.log('name: ', name);
             return (
                 <>
                     <Row>
@@ -43,10 +42,6 @@ export default class Item extends Component{
                 </>
             )
         }
-
-
         }
 
-
-    
 } 
