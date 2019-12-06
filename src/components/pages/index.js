@@ -4,6 +4,7 @@ import CoffeePage from './coffeePage';
 import ForYouPleasure from './forYouPleasure';
 import MainPageItem from './mainPageItem';
 import CoffeeItem from './coffeeItem';
+import Item from './item';
 
 export {
     CoffeePage,
@@ -11,5 +12,6 @@ export {
     ItemPage,
     ForYouPleasure,
     MainPageItem,
-    CoffeeItem
+    CoffeeItem,
+    Item
 };

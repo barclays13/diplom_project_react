@@ -72,9 +72,7 @@ export default class MainPage extends Component{
                             <div className="title">Our best</div>
                             <Row>
                                 <Col lg={{ size: 10, offset: 1 }}>
-                                    <div className="best__wrapper">
                                          <MainPageItem/>
-                                    </div>
                                 </Col>
                             </Row>
                         </Container>

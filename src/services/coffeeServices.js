@@ -17,11 +17,6 @@ export default class CoffeeServices {
         return res.map(this._transformBestsellers);
     }
 
-    async getBestsellers  (id) {
-        const res = await this.getResource('/bestsellers/{id}');
-        return res.map(this._transformBestsellers);
-    }
-
     async getAllCoffee  () {
         const res = await this.getResource('/coffee');
         return res.map(this._transformCoffee);

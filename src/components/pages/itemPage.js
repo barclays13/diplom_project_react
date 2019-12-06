@@ -1,45 +1,50 @@
 import React, {Component} from 'react';
-import {Container, Row, Col } from 'reactstrap';
+import CoffeeServices from '../../services/coffeeServices';
+import {Container} from 'reactstrap';
 import Header from '../header';
+import Item from './item';
 import './coffeepage.sass';
 
 export default class ItemPage extends Component{
 
+    constructor(props){
+        super(props);
+        this.servicesItem();
+        this.state = {
+            data: []
+        };
+    }
+
+    servicesItem(){
+        const coffeeServices = new CoffeeServices ();
+        coffeeServices.getAllCoffee()
+            .then((data) => {   
+                this.setState({
+                    data
+                })
+            })
+    }
+
     render() {
+        const {data} =this.state;
+        const {itemId} = this.props;
+        const item = data.filter(item => item.name === itemId);
+
         return (
             <>
-                    <div className="banner">
-                        <Container>
-                            <Header/>
-                            <h1 className="title-big">Our Coffee</h1>
-                        </Container>
-                    </div>
-                    <section className="shop">
-                            <Row>
-                                <Col lg={{ size: 5, offset: 1 }}>
-                                    <img className="shop__girl" src="../../img/coffee_item.jpg" alt="coffee_item"></img>
-                                </Col>
-                                <Col lg="4">
-                                    <div className="title">About it</div>
-                                    <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
-                                
-                                    <div className="shop__point">
-                                        <span>Country:</span>
-                                        Brazil
-                                    </div>
-                                    <div className="shop__point">
-                                        <span>Description:</span>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </div>
-                                    <div className="shop__point">
-                                        <span>Price:</span>
-                                        <span className="shop__point-price">16.99$</span>
-                                    </div>
-                                    </Col>
-                                </Row>
-                    </section>
+                <div className="banner">
+                    <Container>
+                        <Header/>
+                        <h1 className="title-big">Our Coffee</h1>
+                    </Container>
+                </div>
+                <section className="shop">
+                        <Item item={item}/>
+                </section>
             </>
         )
     }
+
+
+    
 } 

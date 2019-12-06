@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CoffeeServices from '../../services/coffeeServices';
 import Spinner from '../spinner';
 import Error from '../error/';
+import ItemPage from './itemPage';
 import './mainpage.sass';
 
 
@@ -13,8 +14,10 @@ export default class MainPageItem extends Component {
             this.state = {
                 data: [],
                 loading:true,
-                error: false
+                error: false,
+                itemId: ''
             };
+            this.onOpenCart = this.onOpenCart.bind(this);
         } 
 
         servicesItem(){
@@ -35,10 +38,22 @@ export default class MainPageItem extends Component {
                     })
                 });
         }
-        
+
+        onOpenCart(e){
+            e = e || window.event;         
+            let el = e.target || e.srcElement;
+            this.setState({
+                itemId: el.parentElement.id
+            })
+          }
+
         render(){
 
-            const {loading, error} = this.state;
+            const {loading, error, itemId} = this.state;
+
+            if(itemId){
+                return <ItemPage itemId={itemId}/>
+            }
             if (error) {
                 return <Error/>
             }
@@ -48,9 +63,12 @@ export default class MainPageItem extends Component {
             }
             
             const element = this.state.data.map(item=>{
-            const id = item.name.trim();
+            const id = item.name;
                 return(
-                    <div className="best__item" key={id}>
+                    <div 
+                        className="best__item" 
+                        key={id}
+                        id={id}>
                         <img  alt="coffee" src= {item.url}></img>
                         <div className="best__item-title">
                             {item.name}
@@ -60,10 +78,13 @@ export default class MainPageItem extends Component {
                 )
                 
             })
+
             return(
-                <>
+                <div 
+                    className="best__wrapper"
+                    onClick={this.onOpenCart}>
                     {element}
-                </>
+                </div>
             )
         }
 } 
