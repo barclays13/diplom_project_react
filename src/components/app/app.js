@@ -8,19 +8,14 @@ import './style.sass';
 export default class App extends Component {
 
     render() {
+
         return (
                 <Router>
                     <Switch>
-                        <Route path='/coffee'  component={CoffeePage}/>
+                        <Route path='/coffee' exact component={CoffeePage}/>
+                        <Route path='/coffeeItem' component={ItemPage}/> 
                         <Route path='/for-you-pleasure'  component={ForYouPleasure}/>
-                        <Route path='/main' exact component={MainPage} />
-                        <Route path='/123' render={
-                            ({match}) => {
-                                console.log('match: ', match);
-                                const {id} = match.params;
-                                console.log('id: ', id);
-                            return <ItemPage itemId={id}/>}
-                        }/> 
+                        <Route path='/main' component={MainPage}/>
                         <Redirect from='/' to='/main'/>
                     </Switch>
                     <Footer/>

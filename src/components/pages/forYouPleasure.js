@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
-import CoffeeItem from './coffeeItem';
+import ForItem from './forItem';
 import CoffeeServices from '../../services/coffeeServices';
 import Error from '../error';
 import './forYouPleasure.sass';
@@ -82,7 +82,7 @@ export default class ForYouPleasure extends Component{
                         <div className="line"></div>
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
-                                <CoffeeItem 
+                                <ForItem 
                                 props={data}
                                 loading={loading}
                                 error= {error}/>

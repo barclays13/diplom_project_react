@@ -84,6 +84,7 @@ export default class CoffeePage extends Component{
 
         const {data, term, filter, loading, error} = this.state;
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
+        
         return (
             <>
                 <div className="banner">
@@ -132,7 +133,7 @@ export default class CoffeePage extends Component{
                         
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
-                                <CoffeeItem 
+                                <CoffeeItem
                                     props={visiblePosts}
                                     loading={loading}
                                     error={error}/>

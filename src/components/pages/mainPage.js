@@ -72,7 +72,8 @@ export default class MainPage extends Component{
                             <div className="title">Our best</div>
                             <Row>
                                 <Col lg={{ size: 10, offset: 1 }}>
-                                         <MainPageItem/>
+                                        <MainPageItem 
+                                            onItemSelected={() => {this.props.history.push(`/coffeeItem`)}}/>
                                 </Col>
                             </Row>
                         </Container>

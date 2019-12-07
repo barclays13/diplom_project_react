@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import CoffeeServices from '../../services/coffeeServices';
 import Spinner from '../spinner';
-import Error from '../error/';
+import Error from '../error';
 import ItemPage from './itemPage';
+import {withRouter} from 'react-router-dom';
 import './mainpage.sass';
 
 
-export default class MainPageItem extends Component {
+class MainPageItem extends Component {
 
         constructor(props){
             super(props);
@@ -15,9 +16,11 @@ export default class MainPageItem extends Component {
                 data: [],
                 loading:true,
                 error: false,
-                itemId: ''
+                itemId: '',
+                dataUpdate: '123'
             };
             this.onOpenCart = this.onOpenCart.bind(this);
+
         } 
 
         servicesItem(){
@@ -39,9 +42,9 @@ export default class MainPageItem extends Component {
                 });
         }
 
-        onOpenCart(e){
+         onOpenCart(e){
             e = e || window.event;         
-            let el = e.target || e.srcElement;
+            const el = e.target || e.srcElement;
             this.setState({
                 itemId: el.parentElement.id
             })
@@ -54,6 +57,7 @@ export default class MainPageItem extends Component {
             if(itemId){
                 return <ItemPage itemId={itemId}/>
             }
+            
             if (error) {
                 return <Error/>
             }
@@ -70,7 +74,8 @@ export default class MainPageItem extends Component {
                         key={id}
                         id={id}>
                         <img  alt="coffee" src= {item.url}></img>
-                        <div className="best__item-title">
+                        <div className="best__item-title"
+                                            >
                             {item.name}
                         </div>
                         <div className="best__item-price">{item.price}</div>
@@ -80,11 +85,19 @@ export default class MainPageItem extends Component {
             })
 
             return(
-                <div 
-                    className="best__wrapper"
-                    onClick={this.onOpenCart}>
-                    {element}
-                </div>
+                <>
+                    <div 
+                        className="best__wrapper"
+                        // onClick={() => this.props.onItemSelected()}
+                        onClick={this.onOpenCart}
+                        >
+                        {element}
+                    </div>
+                </>
+
             )
         }
 } 
+
+
+export default withRouter(MainPageItem);

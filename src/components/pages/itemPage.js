@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import CoffeeServices from '../../services/coffeeServices';
-import {Container} from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import Header from '../header';
-import Item from './item';
+import Error from '../error';
 import './coffeepage.sass';
 
 export default class ItemPage extends Component{
@@ -30,8 +30,9 @@ export default class ItemPage extends Component{
         const {itemId} = this.props;
         const item = data.filter(item => item.name === itemId);
 
-        return (
-            <>
+        if (item[0] === undefined)  {
+            return (
+                <>
                 <div className="banner">
                     <Container>
                         <Header/>
@@ -39,12 +40,48 @@ export default class ItemPage extends Component{
                     </Container>
                 </div>
                 <section className="shop">
-                        <Item item={item}/>
+                        <Error/>
                 </section>
             </>
-        )
+            )
+            
+        } else {
+            const {name, url, country, description, price} = item[0];
+                return (
+                    <>
+                        <div className="banner">
+                            <Container>
+                                <Header/>
+                                <h1 className="title-big">Our Coffee</h1>
+                            </Container>
+                        </div>
+                        <section className="shop">
+                            <Row>
+                                <Col lg={{ size: 5, offset: 1 }}>
+                                    <img className="shop__girl" src={url} style = {{width: "100%"}} alt="coffee_item"></img>
+                                </Col>
+                                <Col lg="4">
+                                    <div className="title">{name}</div>
+                                    <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                
+                                    <div className="shop__point">
+                                        <span>Country:</span>
+                                        {country}
+                                    </div>
+                                    <div className="shop__point">
+                                        <span>Description:</span>
+                                        {description}
+                                    </div>
+                                    <div className="shop__point">
+                                        <span>Price:</span>
+                                        <span className="shop__point-price">{price}</span>
+                                    </div>
+                                    </Col>
+                                </Row>
+                        </section>
+                    </>
+                )
+        }
     }
 
-
-    
 } 
