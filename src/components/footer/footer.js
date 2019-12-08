@@ -13,7 +13,7 @@ export default class Footer extends Component {
                         <ul className="footer">
                             <li className="footer__item">
                                 <Link to="/">
-                                    <img src="logo/Logo_black.svg" alt="logo"></img>
+                                    <img src="../../logo/Logo_black.svg" alt="logo"></img>
                                 </Link>
                             </li>
                             <li className="footer__item">
@@ -25,7 +25,7 @@ export default class Footer extends Component {
                         </ul>
                     </Col>
                 </Row>
-                <img className="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
             </Container>
         )
     }

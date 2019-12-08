@@ -6,9 +6,10 @@ import CoffeeItem from './coffeeItem';
 import CoffeeServices from '../../services/coffeeServices';
 import SearchPanel from '../searchPanel';
 import FilterPanel from '../filterPanel';
+import {withRouter} from 'react-router-dom';
 import './coffeepage.sass';
 
-export default class CoffeePage extends Component{
+class CoffeePage extends Component{
 
     constructor (props) {
         super(props);
@@ -18,7 +19,8 @@ export default class CoffeePage extends Component{
             filter: 'All',
             loading: true,
             error: false,
-            errorMessage: false
+            errorMessage: false,
+            itemId:''
         }
         this.onUpdateSerach = this.onUpdateSerach.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
@@ -76,6 +78,14 @@ export default class CoffeePage extends Component{
         this.setState({filter})
     }
 
+    updateData = (value) => {
+        this.setState({
+            itemId:value
+        })
+        this.props.updateDatas(value);
+     }
+
+
     render() {
 
         if (this.state.errorMessage){
@@ -101,7 +111,7 @@ export default class CoffeePage extends Component{
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our beans</div>
-                                <img className="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
                                 <div className="shop__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                     <br></br><br></br>
@@ -136,7 +146,10 @@ export default class CoffeePage extends Component{
                                 <CoffeeItem
                                     props={visiblePosts}
                                     loading={loading}
-                                    error={error}/>
+                                    error={error}
+                                    updateData={(itemId) =>{
+                                        return this.props.history.push(`/coffee/${itemId}`)
+                                    }}/>
                             </Col>
                         </Row>
                     </Container>
@@ -146,7 +159,7 @@ export default class CoffeePage extends Component{
     }
 } 
 
-
+export default withRouter(CoffeePage);
 
 
 

@@ -3,31 +3,35 @@ import { Container, Row, Col } from 'reactstrap';
 import Header from '../header';
 import MainPageItem from './mainPageItem';
 import Error from '../error';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import './mainpage.sass';
 
-
-export default class MainPage extends Component{
+class MainPage extends Component{
     constructor(){
         super();
         this.state = {
-            errorMessage: false
+            errorMessage: false,
+            itemId:''
          };
     }
 
-    
     componentDidCatch(){
         this.setState({
             errorMessage:true
         });
     }
 
-    render() {
+    updateData = (value) => {
+        this.setState({
+            itemId:value
+        })
+        this.props.updateDatas(value);
+     }
 
+    render() {
         if (this.state.errorMessage){
             return <Error/>
         }
-
         return (
             <>      
                     <div className="preview">
@@ -36,7 +40,7 @@ export default class MainPage extends Component{
                             <Row>
                                 <Col lg={{ size: 10, offset: 1 }}>
                                     <h1 className="title-big">Everything You Love About Coffee</h1>
-                                    <img className="beanslogo" src="logo/Beans_logo.svg" alt="Beans logo"></img>
+                                    <img className="beanslogo" src="../../logo/Beans_logo.svg" alt="Beans logo"></img>
                                     <div className="preview__subtitle">We makes every day full of energy and taste</div>
                                     <div className="preview__subtitle">Want to try our beans?</div>
                                     <Link to="/coffee" className="preview__btn">More</Link>
@@ -49,7 +53,7 @@ export default class MainPage extends Component{
                             <Row>
                                 <Col lg={{ size: 6, offset: 3 }}>
                                     <div className="title">About Us</div>
-                                    <img className="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                    <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
                                     <div className="about__text">
                                         Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                         Afraid at highly months do things on at. Situation recommend objection do intention
@@ -73,7 +77,9 @@ export default class MainPage extends Component{
                             <Row>
                                 <Col lg={{ size: 10, offset: 1 }}>
                                         <MainPageItem 
-                                            onItemSelected={() => {this.props.history.push(`/coffeeItem`)}}/>
+                                        updateData={(itemId) =>{
+                                            return this.props.history.push(`/main/${itemId}`)
+                                        }}/>
                                 </Col>
                             </Row>
                         </Container>
@@ -82,3 +88,5 @@ export default class MainPage extends Component{
         )
     }
 } 
+
+export default withRouter(MainPage);

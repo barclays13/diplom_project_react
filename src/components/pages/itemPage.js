@@ -26,8 +26,8 @@ export default class ItemPage extends Component{
     }
 
     render() {
-        const {data} =this.state;
         const {itemId} = this.props;
+        const {data} =this.state;
         const item = data.filter(item => item.name === itemId);
 
         if (item[0] === undefined)  {
@@ -56,6 +56,7 @@ export default class ItemPage extends Component{
                             </Container>
                         </div>
                         <section className="shop">
+                            <Container>
                             <Row>
                                 <Col lg={{ size: 5, offset: 1 }}>
                                     <img className="shop__girl" src={url} style = {{width: "100%"}} alt="coffee_item"></img>
@@ -78,10 +79,10 @@ export default class ItemPage extends Component{
                                     </div>
                                     </Col>
                                 </Row>
+                                </Container>
                         </section>
                     </>
                 )
         }
     }
-
 } 

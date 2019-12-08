@@ -18,6 +18,7 @@ export default class CoffeeItem extends Component {
     onOpenCart(e){
         e = e || window.event;         
         let el = e.target || e.srcElement;
+        this.props.updateData(el.parentElement.id);
         this.setState({
             itemId: el.parentElement.id
         })
@@ -66,3 +67,4 @@ export default class CoffeeItem extends Component {
             )
         }
 } 
+

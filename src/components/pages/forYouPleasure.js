@@ -67,7 +67,7 @@ export default class ForYouPleasure extends Component{
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our goods</div>
-                                <img className="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
                                 <div className="shop__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                     <br></br><br></br>
