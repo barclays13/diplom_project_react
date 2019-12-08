@@ -11,12 +11,12 @@ export default class CoffeeItem extends Component {
         super(props);
         this.state = {
             itemId: ''
-        };
+        }
         this.onOpenCart = this.onOpenCart.bind(this);
     } 
 
     onOpenCart(e){
-        e = e || window.event;         
+        e = e || window.event;
         let el = e.target || e.srcElement;
         this.props.updateData(el.parentElement.id);
         this.setState({
@@ -61,7 +61,7 @@ export default class CoffeeItem extends Component {
         
             return(
                 <div className="shop__wrapper"
-                onClick={this.onOpenCart}>
+                    onClick={this.onOpenCart}>
                     {element}
                 </div>
             )

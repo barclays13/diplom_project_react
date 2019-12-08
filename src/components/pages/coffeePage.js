@@ -82,7 +82,6 @@ class CoffeePage extends Component{
         this.setState({
             itemId:value
         })
-        this.props.updateDatas(value);
      }
 
 
@@ -107,7 +106,7 @@ class CoffeePage extends Component{
                     <Container>
                         <Row>
                             <Col lg={{ size: 4, offset: 2 }}>
-                                <img className="shop__girl" src="img/coffee_girl.jpg" alt="girl"></img>
+                                <img className="shop__girl" src="../../img/coffee_girl.jpg" alt="girl"></img>
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our beans</div>

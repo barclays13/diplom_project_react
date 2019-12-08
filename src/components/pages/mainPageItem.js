@@ -46,8 +46,8 @@ export default class MainPageItem extends Component {
             this.props.updateData(el.parentElement.id);
             this.setState({
                 itemId: el.parentElement.id
-            });
-          }
+            })
+          };
 
         render(){
             const {loading, error, itemId} = this.state;
@@ -64,8 +64,8 @@ export default class MainPageItem extends Component {
                 return <Spinner/>
             }
             
-            const element = this.state.data.map(item=>{
-            const id = item.name;
+            const element = this.state.data.map((item)=>{
+                const id = item.name;
                 return(
                     <div 
                         className="best__item" 
@@ -78,19 +78,14 @@ export default class MainPageItem extends Component {
                         <div className="best__item-price">{item.price}</div>
                     </div>
                 )
-                
             })
 
             return(
-                <>
-                    <div 
-                        className="best__wrapper"
-                        onClick={this.onOpenCart}
-                        >
-                        {element}
-                    </div>
-                </>
-
+                <div 
+                    className="best__wrapper"
+                    onClick={this.onOpenCart}>
+                    {element}
+                </div>
             )
         }
 } 

@@ -6,20 +6,7 @@ import './style.sass';
 
 
 export default class App extends Component {
-
-
-    state = {
-        itemId:''
-    };
-         
-    updateDatas = (value) => {
-            this.setState({ itemId: value })
-     }
-
     render() {
-        const {itemId} = this.state;
-        console.log('itemId: ', itemId);
-
         return (
                 <Router>
                     <Switch>
@@ -27,7 +14,6 @@ export default class App extends Component {
                         <Route path='/coffee/:id' render={
                             ({match})=>{
                                 const {id} = match.params;
-                                console.log('id: ', id);
                                 return <ItemPage itemId={id}/>
                             }}/>
                         <Route path='/for-you-pleasure'  component={ForYouPleasure}/>
@@ -35,10 +21,8 @@ export default class App extends Component {
                         <Route path='/main/:id' render={
                             ({match})=>{
                                 const {id} = match.params;
-                                console.log('id: ', id);
                                 return <ItemPage itemId={id}/>
                             }}/>
-       
                         <Redirect from='/' to='/main'/>
                     </Switch>
                     <Footer/>

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import CoffeeServices from '../../services/coffeeServices';
 import {Container, Row, Col} from 'reactstrap';
 import Header from '../header';
-import Error from '../error';
+import Spinner from '../spinner';
+import Error from '../error/';
 import './coffeepage.sass';
 
 export default class ItemPage extends Component{
@@ -11,24 +12,44 @@ export default class ItemPage extends Component{
         super(props);
         this.servicesItem();
         this.state = {
-            data: []
+            data: [], 
+            loading: true,
+            error: false
         };
     }
 
     servicesItem(){
         const coffeeServices = new CoffeeServices ();
         coffeeServices.getAllCoffee()
-            .then((data) => {   
-                this.setState({
-                    data
-                })
+        .then((data)  => {   
+            this.setState({
+                data,
+                loading:false,
+                error: false
             })
+        })
+        .catch((data)  => {   
+            this.setState({
+                data,
+                loading:false,
+                error: true
+            })
+        });
     }
 
     render() {
+        
         const {itemId} = this.props;
-        const {data} =this.state;
+        const {data, loading, error} =this.state;
         const item = data.filter(item => item.name === itemId);
+
+        if (loading) {
+            return <Spinner/>
+        }
+
+        if (error) {
+            return <Error/>
+        }
 
         if (item[0] === undefined)  {
             return (
