@@ -4,6 +4,8 @@ import Header from '../header';
 import MainPageItem from './mainPageItem';
 import Error from '../error';
 import {Link, withRouter} from 'react-router-dom';
+import beansLogo from '../../logo/Beans_logo.svg';
+import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import './mainpage.sass';
 
 class MainPage extends Component{
@@ -42,7 +44,7 @@ class MainPage extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <h1 className="title-big">Everything You Love About Coffee</h1>
-                                <img className="beanslogo" src="../../logo/Beans_logo.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src={beansLogo} alt="Beans logo"></img>
                                 <div className="preview__subtitle">We makes every day full of energy and taste</div>
                                 <div className="preview__subtitle">Want to try our beans?</div>
                                 <Link to="/coffee" className="preview__btn">More</Link>
@@ -55,7 +57,7 @@ class MainPage extends Component{
                         <Row>
                             <Col lg={{ size: 6, offset: 3 }}>
                                 <div className="title">About Us</div>
-                                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src={BeansLogoDark} alt="Beans logo"></img>
                                 <div className="about__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                     Afraid at highly months do things on at. Situation recommend objection do intention

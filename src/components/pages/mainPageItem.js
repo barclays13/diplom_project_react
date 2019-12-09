@@ -9,8 +9,8 @@ import './mainpage.sass';
 
 export default class MainPageItem extends Component {
 
-        constructor(props){
-            super(props);
+        constructor(visiblePosts){
+            super(visiblePosts);
             this.servicesItem();
             this.state = {
                 data: [],
@@ -63,7 +63,7 @@ export default class MainPageItem extends Component {
             if (loading) {
                 return <Spinner/>
             }
-            
+             
             const element = this.state.data.map((item)=>{
                 const id = item.name;
                 return(

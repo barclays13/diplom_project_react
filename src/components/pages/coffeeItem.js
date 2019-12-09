@@ -25,7 +25,7 @@ export default class CoffeeItem extends Component {
     }
 
         render(){
-                const {loading, props, error} = this.props; 
+                const {loading, visiblePosts, error} = this.props; 
                 const {itemId} = this.state;
 
                 if (loading) {
@@ -40,7 +40,7 @@ export default class CoffeeItem extends Component {
                     return <Error/>
                 }
 
-                const element = props.map(item=>{
+                const element = visiblePosts.map(item=>{
                 const {url, name, country, price} = item;
                 const id = name;
 

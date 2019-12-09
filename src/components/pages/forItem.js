@@ -6,7 +6,7 @@ import './coffeepage.sass';
 
 export default class ForItem extends Component {
         render(){
-                const {loading, props, error} = this.props; 
+                const {loading, data, error} = this.props; 
                 if (loading) {
                     return <Spinner/>
                 }
@@ -16,7 +16,7 @@ export default class ForItem extends Component {
                     return <Error/>
                 }
 
-                const element = props.map(item=>{
+                const element = data.map(item=>{
                 const {url, name, country, price} = item;
                 const id = name;
 

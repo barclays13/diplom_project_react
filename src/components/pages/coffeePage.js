@@ -7,6 +7,8 @@ import CoffeeServices from '../../services/coffeeServices';
 import SearchPanel from '../searchPanel';
 import FilterPanel from '../filterPanel';
 import {withRouter} from 'react-router-dom';
+import coffeeGirl from '../../img/coffee_girl.jpg';
+import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import './coffeepage.sass';
 
 class CoffeePage extends Component{
@@ -106,11 +108,11 @@ class CoffeePage extends Component{
                     <Container>
                         <Row>
                             <Col lg={{ size: 4, offset: 2 }}>
-                                <img className="shop__girl" src="../../img/coffee_girl.jpg" alt="girl"></img>
+                                <img className="shop__girl" src={coffeeGirl} alt="girl"></img>
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our beans</div>
-                                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src={BeansLogoDark} alt="Beans logo"></img>
                                 <div className="shop__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                     <br></br><br></br>
@@ -143,7 +145,7 @@ class CoffeePage extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <CoffeeItem
-                                    props={visiblePosts}
+                                    visiblePosts={visiblePosts}
                                     loading={loading}
                                     error={error}
                                     updateData={(itemId) =>{

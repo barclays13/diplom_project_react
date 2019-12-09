@@ -4,6 +4,7 @@ import Header from '../header';
 import ForItem from './forItem';
 import CoffeeServices from '../../services/coffeeServices';
 import Error from '../error';
+import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import './forYouPleasure.sass';
 
 export default class ForYouPleasure extends Component{
@@ -67,7 +68,7 @@ export default class ForYouPleasure extends Component{
                             </Col>
                             <Col lg="4">
                                 <div className="title">About our goods</div>
-                                <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                <img className="beanslogo" src={BeansLogoDark} alt="Beans logo"></img>
                                 <div className="shop__text">
                                     Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                                     <br></br><br></br>
@@ -83,7 +84,7 @@ export default class ForYouPleasure extends Component{
                         <Row>
                             <Col lg={{ size: 10, offset: 1 }}>
                                 <ForItem 
-                                props={data}
+                                data={data}
                                 loading={loading}
                                 error= {error}/>
                             </Col>

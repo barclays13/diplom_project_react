@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <SearchPanel> SearchPanel have renderer correctly 1`] = `
+<form
+  action="#"
+  className="shop__search"
+>
+  <label
+    className="shop__search-label"
+    htmlFor="filter"
+  >
+    Looking for
+  </label>
+  <input
+    className="shop__search-input"
+    id="filter"
+    onChange={[Function]}
+    placeholder="start typing here..."
+    type="text"
+  />
+</form>
+`;

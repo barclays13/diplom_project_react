@@ -4,6 +4,7 @@ import {Container, Row, Col} from 'reactstrap';
 import Header from '../header';
 import Spinner from '../spinner';
 import Error from '../error/';
+import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import './coffeepage.sass';
 
 export default class ItemPage extends Component{
@@ -84,7 +85,7 @@ export default class ItemPage extends Component{
                                 </Col>
                                 <Col lg="4">
                                     <div className="title">{name}</div>
-                                    <img className="beanslogo" src="../../logo/Beans_logo_dark.svg" alt="Beans logo"></img>
+                                    <img className="beanslogo" src={BeansLogoDark} alt="Beans logo"></img>
                                 
                                     <div className="shop__point">
                                         <span>Country:</span>
